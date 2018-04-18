@@ -2409,7 +2409,7 @@
                     "height": 40,
                     "top": 0,
                     "left": 0,
-                    "width": 400,
+                    "width": 900,
                     "position": "available",
                     "claimMonitorSpace": true,
                     "addToWorkspace": false,
