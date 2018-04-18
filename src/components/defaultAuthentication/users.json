@@ -2409,7 +2409,7 @@
                     "height": 40,
                     "top": 0,
                     "left": 0,
-                    "width": 900,
+                    "width": 400,
                     "position": "available",
                     "claimMonitorSpace": true,
                     "addToWorkspace": false,
@@ -2970,7 +2970,7 @@
                 "type": "menuLauncher",
                 "iconClasses": "finsemble-toolbar-brand-logo cq-drag",
                 "align": "left",
-                "icon": "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLjI1IDAgMCAtMS4yNSAwIDQ1KSI+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggc3R5bGU9ImZpbGw6IzNCODhDMzsiIGQ9Ik00MDkuNi0zMjguMDg5YzAtMjUuMTM0LTIwLjM3OC00NS41MTEtNDUuNTExLTQ1LjUxMUg0NS41MTFDMjAuMzc4LTM3My42LDAtMzUzLjIyMiwwLTMyOC4wODkgICAgIFYtOS41MTFDMCwxNS42MjIsMjAuMzc4LDM2LDQ1LjUxMSwzNmgzMTguNTc4QzM4OS4yMjIsMzYsNDA5LjYsMTUuNjIyLDQwOS42LTkuNTExVi0zMjguMDg5eiIvPgoJCQk8cGF0aCBzdHlsZT0iZmlsbDojRkZGRkZGOyIgZD0iTTI2Mi43MTMtMjEzLjUxNWM1Ljk4NSwxMy40MTQsOC40NjUsMjguOTIyLDguNDY1LDQ1LjE1OGMwLDQxLjk3My0yMi4yMzIsODEuMTM1LTY2LjMzMiw4MS4xMzUgICAgIGMtNDQuMDg5LDAtNjYuMzIxLTM4LjQ0Ni02Ni4zMjEtODEuMTM1YzAtNDMuMDMxLDIxLjUyNy04MS4xNDYsNjYuMzIxLTgxLjE0NmM4LjExMiwwLDE1LjUzMSwxLjA3LDIyLjU3NCwyLjQ4bC0xMi42ODYsMTIuMzQ1ICAgICBjLTMuODkxLDMuNTI3LTYuNzEzLDkuMTctNi43MTMsMTQuMTA4YzAsMTMuNzU2LDkuNTM1LDI1LjM5NSwyMy45OTYsMjUuMzk1YzQuOTM4LDAsOS4xNTktMS43NjQsMTMuNDAzLTQuNTg1TDI2Mi43MTMtMjEzLjUxNXogICAgICBNMjY2LjkzNC0yODIuNjU3Yy0xNy4yODMtOS44NzYtMzguMDkzLTE1LjUxOS02Mi4wODktMTUuNTE5Yy03MS42MTIsMC0xMjEuMzQ0LDU2Ljc5OC0xMjEuMzQ0LDEyOS44MiAgICAgYzAsNzMuMzc1LDQ5LjM4LDEyOS44MiwxMjEuMzQ0LDEyOS44MmM3MC45MDYsMCwxMjEuMzU1LTU4LjIwOSwxMjEuMzU1LTEyOS44MmMwLTMxLjA1LTguMTEyLTU5LjI2Ny0yMy42NDMtODEuNDg4ICAgICBsMjAuMTE2LTE3LjI5NGM2LjcwMi01Ljk5NiwxMi4zNDUtMTEuNjM5LDEyLjM0NS0yMS41MjdjMC0xMi4zMzMtMTIuMzQ1LTIyLjIyMS0yNC4zMjYtMjIuMjIxICAgICBjLTcuNzgyLDAtMTQuMTA4LDMuMTg2LTIzLjY0MywxMS4yOThMMjY2LjkzNC0yODIuNjU3TDI2Ni45MzQtMjgyLjY1N3oiLz4KCQk8L2c+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==",
+                "icon": "$applicationRoot/components/assets/img/astronaut.png",
                 "menuType": "File Menu",
                 "preSpawn": true
             },
@@ -3056,6 +3056,6 @@
                 ]
             }
         ],
-        "cssOverridePath": "$applicationRoot/components/assets/css/qUser.css"
+        "cssOverridePath": "$applicationRoot/components/assets/css/floatingUser.css"
     }
 }
