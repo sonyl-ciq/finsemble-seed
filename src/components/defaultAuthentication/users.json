@@ -2430,7 +2430,7 @@
                 "component": {
                     "category": "system",
                     "spawnOnStartup": true,
-                    "spawnOnAllMonitors": true,
+                    "spawnOnAllMonitors": false,
                     "canMinimize": false
                 },
                 "foreign": {
