@@ -137,11 +137,16 @@
                 "url": "$applicationRoot/components/defaultAuthentication/defaultAuthentication.html",
                 "frame": false,
                 "resizable": false,
-                "autoShow": true,
+                "autoShow": false,
                 "top": "center",
                 "left": "center",
-                "width": 400,
-                "height": 190
+                "width": 423,
+                "height": 324,
+                "options": {
+					"resizable": false,
+					"autoShow": true,
+					"alwaysOnTop": true
+				}
             },
             "component": {
                 "inject": false

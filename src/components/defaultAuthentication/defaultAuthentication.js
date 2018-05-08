@@ -1,6 +1,9 @@
 (() => {
 	"use strict";
 
+	// This defaultAuthentication shows a loading gif. If you want the component to be invisible, set 
+	// components.defaultAuthentication.window.autoShow to false.
+
 	// Load user configurations from file
 	const users = require("./users.json");
 
@@ -38,25 +41,16 @@
 	};
 
 	window.onload = () => {
-		// Populate dropdown with available users
-		const select = document.getElementById("user");
-		Object.keys(users).forEach((key, index) => {
-			select.options[index] = new Option(key);
-		});
+		// Fetch the username from the environment variable.
+		fin.desktop.System.getEnvironmentVariable("USERNAME", (username) => {
+			console.log(`This is the USERNAME value: ${username}`);
 
-		// Add onclick for quit button
-		document.getElementById("quit").onclick = () => {
-			FSBL.shutdownApplication();
-			FSBL.Clients.WindowClient.getCurrentWindow().close();
-		};
-
-		// Add onclick for submit button
-		document.getElementById("submit").onclick = () => {
-			// Get selected user from form
-			const username = document.getElementById("user").value;
+			// Fetch the configuration based on username
+			// TODO: Fetch configuration from remote service base on username
+			username = Object.keys(users)[0];
 
 			// Apply configuration to Finsemble.
 			applyUserConfig(username);
-		};
+		});
 	};
 })()
