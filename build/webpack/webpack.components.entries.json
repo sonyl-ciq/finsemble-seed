@@ -1,6 +1,6 @@
 {
     "defaultAuthentication": {
-        "output": "components\\defaultAuthentication\\defaultAuthentication",
-        "entry": ".\\src\\components\\defaultAuthentication\\defaultAuthentication.js"
+        "output": "components/defaultAuthentication/defaultAuthentication",
+        "entry": "./src/components/defaultAuthentication/defaultAuthentication.js"
     }
 }
