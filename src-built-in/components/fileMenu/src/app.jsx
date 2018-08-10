@@ -6,14 +6,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Actions as FileMenuActions } from "./stores/fileMenuStore";
 import { FinsembleMenu, FinsembleMenuItem, FinsembleMenuSection, FinsembleMenuSectionLabel } from "@chartiq/finsemble-react-controls";
-import "../../assets/css/finfont.css";
-import "../../assets/css/finsemble.css";
-import "../fileMenu.css";
+import "../../../../assets/css/font-finance.css";
+import "../../../../assets/css/finsemble.css";
 
 class FileMenu extends React.Component {
 	render() {
 		let padding = {
-			height: 10,
+			height: 0,
 			width: 40
 		};
 		return (<FinsembleMenu padding={padding}>
