@@ -40,12 +40,16 @@
 
         const name = FSBL.Clients.WindowClient.getCurrentWindow().name;
         if (name === storeOwner) {
+            FSBL.Clients.Logger.debug("Creating theming store");
+
             // If the first toolbar, create the distributed store.
             const values = getDefaultTheme();
 
             const params = { store: storeName, global: true, values: values };
             FSBL.Clients.DistributedStoreClient.createStore(params, fetchStoreCB);
         } else {
+            FSBL.Clients.Logger.debug("Fetching theming store");
+
             // Get the already created distributed store
             FSBL.Clients.DistributedStoreClient.getStore({ store: storeName }, fetchStoreCB);
         }
@@ -74,11 +78,12 @@
             return FSBL.Clients.Logger.error(err);
         }
 
-        FSBL.Clients.Logger.debug("Theme change received: ", data);
+        // Get them from returned data
+        const theme = data.value.values;
+        FSBL.Clients.Logger.debug("Theme change received: ", theme);
 
         // Apply theme to window
-        // TODO: Read theme data from received data and apply to window.
-        document.documentElement.style.setProperty("--toolbar-background-color", "red")
+        Object.keys(theme).forEach((key) => document.documentElement.style.setProperty(key, theme[key]))
     }
 
     /**
@@ -92,10 +97,13 @@
             return FSBL.Clients.Logger.error(err);
         }
 
+        FSBL.Clients.Logger.debug("Theming store retrieved. Listening for changes.");
+
         // Save store object to script level variable for later use.
         themeStore = storeObject;
 
-        store.addListener(themeChangeHandler, themeListenerCB);
+        // Listen for theme changes
+        themeStore.addListener(themeChangeHandler, themeListenerCB);
     }
 
     FSBL.addEventListener("onReady", initializeStore);
