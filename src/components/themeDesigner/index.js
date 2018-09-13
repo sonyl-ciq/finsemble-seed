@@ -12,10 +12,9 @@
 		"--secondary-accent-color",
 		"--tertiary-accent-color",
 		"--primary-negative-color",
-		"--secondary-accent-color",
-		"--tertiary-accent-color",
+		"--secondary-negative-color",
+		"--tertiary-negative-color",
 		"--primary-background-color",
-		"--secondary-background-color",
 		"--secondary-background-color",
 		"--tertiary-background-color",
 		"--scrollbar-color"
@@ -90,19 +89,34 @@
 	}
 
 	/**
+	 * Handles the get values callback fetching the current style values from the store so they can be shown in the UI.
+	 * 
+	 * @param {*} err The error object (<code>null<code> if no error). 
+	 * @param {*} values The values returned from the store.
+	 */
+	const getValuesCB = (err, values) => {
+		if (err) {
+			return FSBL.Clients.Logger.error(err);
+		}
+
+		ids.forEach((id) => document.getElementById(id).value = values[id]);
+	}
+
+	/**
      * Handles the <code>createStore</code> and <code>getStore</code> callbacks.
      * 
      * @param {*} err Error object. Null if no error.
      * @param {*} storeObject The created store object.
      */
 	const fetchStoreCB = (err, storeObject) => {
-		debugger
 		if (err) {
 			return FSBL.Clients.Logger.error(err);
 		}
 
 		// Save store object to script level variable for later use.
 		themeStore = storeObject;
+
+		themeStore.getValues(ids, getValuesCB);
 
 		themeStore.addListener(themeChangeHandler, themeListenerCB);
 	}
