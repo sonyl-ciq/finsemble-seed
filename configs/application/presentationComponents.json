@@ -16,7 +16,8 @@
 			"component": {
 				"allowAdhoc": "@TODO",
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -47,7 +48,8 @@
 			"component": {
 				"allowAdhoc": "@TODO",
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -78,7 +80,8 @@
 			"component": {
 				"allowAdhoc": "@TODO",
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -108,7 +111,8 @@
 			},
 			"component": {
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -140,7 +144,8 @@
 			},
 			"component": {
 				"spawnOnStartup": true,
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -185,7 +190,8 @@
 					}
 				],
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -218,7 +224,8 @@
 			},
 			"component": {
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -250,7 +257,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -281,7 +289,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -316,7 +325,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": true
+				"spawnOnStartup": true,
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"clients": {
@@ -356,7 +366,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": true
+				"spawnOnStartup": true,
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"clients": {
@@ -396,7 +407,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": false
+				"spawnOnStartup": false,
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"clients": {
@@ -437,7 +449,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": true
+				"spawnOnStartup": true,
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -512,7 +525,8 @@
 				"ephemeral": true
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -547,7 +561,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": true
+				"spawnOnStartup": true,
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -585,7 +600,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -629,7 +645,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
@@ -659,7 +676,8 @@
 				"height": 400
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
