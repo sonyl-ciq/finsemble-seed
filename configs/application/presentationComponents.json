@@ -482,7 +482,8 @@
 				"category": "system",
 				"spawnOnStartup": true,
 				"spawnOnAllMonitors": true,
-				"canMinimize": false
+				"canMinimize": false,
+				"preload": "$applicationRoot/preloads/theming.js"
 			},
 			"foreign": {
 				"services": {
