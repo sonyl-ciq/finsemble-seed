@@ -109,7 +109,7 @@
 
 	const onReadyCB = () => {
 		// Add the apply button handler
-		const applyBtn = document.getElementsByClassName("apply");
+		const applyBtn = document.getElementById("apply");
 		applyBtn.onclick = applyHandler;
 
 		// Fetch the distributed store
