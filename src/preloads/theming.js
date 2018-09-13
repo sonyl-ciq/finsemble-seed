@@ -23,6 +23,8 @@
     const getDefaultTheme = () => {
         // Get all CSS variables. Based on: https://stackoverflow.com/a/45763800/5397392
         const root = {};
+        
+        // TODO: untangle this mess
         [].slice.call(document.styleSheets)
             .reduce((prev, styleSheet) => {
                 if (styleSheet.cssRules) {
