@@ -9,6 +9,6 @@
 	},
 	"theming": {
 		"output": "preloads/theming",
-		"entry": "./src-built-in/preloads/theming.js"
+		"entry": "./src/preloads/theming.js"
 	}
 }
