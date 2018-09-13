@@ -1,1 +1,6 @@
-{}
+{
+    "themeDesigner": {
+        "output": "components/themeDesigner/index",
+        "entry": "./src/components/themeDesigner/index.js"
+    }
+}
