@@ -6,5 +6,9 @@
 	"zoom": {
 		"output": "preloads/zoom",
 		"entry": "./src-built-in/preloads/zoom.js"
+	},
+	"theming": {
+		"output": "preloads/theming",
+		"entry": "./src-built-in/preloads/theming.js"
 	}
 }
