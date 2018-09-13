@@ -19,45 +19,44 @@
 
     /**
      * Gets the default theme from the running system.
+     * 
+     * Based on: https://stackoverflow.com/a/45763800/5397392
      */
     const getDefaultTheme = () => {
-        // Get all CSS variables. Based on: https://stackoverflow.com/a/45763800/5397392
-        const root = {};
-        
-        // TODO: untangle this mess
-        [].slice.call(document.styleSheets)
-            .reduce((prev, styleSheet) => {
-                if (styleSheet.cssRules) {
-                    return prev + [].slice.call(styleSheet.cssRules)
-                        .reduce((prev, cssRule) => {
-                            if (cssRule.selectorText == ":root") {
-                                const first = cssRule.cssText.indexOf("{") + 1;
-                                const last = cssRule.cssText.lastIndexOf("}") - 1;
-                                const css = cssRule.cssText.substring(first, last);
-                                return prev + css;
-                            }
+        // Get array of style sheets
+        const root = [].slice.call(document.styleSheets)
+            // Remove sheets without CSS rules
+            .filter((styleSheet) => styleSheet.cssRules)
+            // Get array of CSS Rules
+            .reduce((prev, styleSheet) => prev.concat([].slice.call(styleSheet.cssRules)), [])
+            // Remove CSS Rules that aren't root
+            .filter((cssRule) => cssRule.selectorText === ":root")
+            // Convert the CSS strings into a hashmap
+            .reduce((prev, cssRule) => {
+                // Get inner CSS
+                const first = cssRule.cssText.indexOf("{") + 1;
+                const last = cssRule.cssText.lastIndexOf("}") - 1;
+                const cssStr = cssRule.cssText.substring(first, last).trim();
 
-                            return prev;
-                        }, "");
-                }
-            }, "")
-            .trim()
-            .split(";")
-            .forEach((line) => {
-                if (!line.includes(":")) {
-                    return;
-                }
+                // Map to an object
+                const newCSS = {};
+                cssStr
+                    .split(";")
+                    .forEach((line) => {
+                        if (!line || !line.includes(":")) {
+                            // If it doesn't have a : then it isn't a CSS property
+                            return;
+                        }
 
-                const pair = line.split(":");
-                const key = pair[0].trim();
-                const value = pair[1].trim();
-
-                if ((key.length === 0) || (value.length === 0)) {
-                    return;
-                }
-
-                root[key] = value;
-            });
+                        const parts = line.split(":");
+                        const key = parts[0].trim();
+                        const value = parts[1].trim();
+                        newCSS[key] = value;
+                    });
+                
+                // Merge with the pervious object
+                return Object.assign(prev, newCSS);
+            }, {});
         return root;
     }
 
