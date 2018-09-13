@@ -21,9 +21,42 @@
      * Gets the default theme from the running system.
      */
     const getDefaultTheme = () => {
-        // TODO: Is it possible to read the theme variables from the running system?
-        // Returns an empty object for now.
-        return {};
+        // Get all CSS variables. Based on: https://stackoverflow.com/a/45763800/5397392
+        const root = {};
+        [].slice.call(document.styleSheets)
+            .reduce((prev, styleSheet) => {
+                if (styleSheet.cssRules) {
+                    return prev + [].slice.call(styleSheet.cssRules)
+                        .reduce((prev, cssRule) => {
+                            if (cssRule.selectorText == ":root") {
+                                const first = cssRule.cssText.indexOf("{") + 1;
+                                const last = cssRule.cssText.lastIndexOf("}") - 1;
+                                const css = cssRule.cssText.substring(first, last);
+                                return prev + css;
+                            }
+
+                            return prev;
+                        }, "");
+                }
+            }, "")
+            .trim()
+            .split(";")
+            .forEach((line) => {
+                if (!line.includes(":")) {
+                    return;
+                }
+
+                const pair = line.split(":");
+                const key = pair[0].trim();
+                const value = pair[1].trim();
+
+                if ((key.length === 0) || (value.length === 0)) {
+                    return;
+                }
+
+                root[key] = value;
+            });
+        return root;
     }
 
     /**
