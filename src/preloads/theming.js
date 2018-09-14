@@ -21,6 +21,38 @@
     let themeStore;
 
     /**
+     * Converts a CSS String into an object.
+     * 
+     * @param {string} cssStr CSS String
+     */
+    const cssStringToObject = (cssStr) => {
+        debugger
+
+        // Get inner CSS string
+        const first = cssStr.indexOf("{") + 1;
+        const last = cssStr.lastIndexOf("}") - 1;
+        const innerCSS = cssStr.substring(first, last).trim();
+
+        // Map CSS to an object
+        const cssObj = {};
+        innerCSS
+            .split(";")
+            .forEach((line) => {
+                if (!line || !line.includes(":")) {
+                    // If it doesn't have a : then it isn't a CSS property
+                    return;
+                }
+
+                const parts = line.split(":");
+                const key = parts[0].trim();
+                const value = parts[1].trim();
+                cssObj[key] = value;
+            });
+        
+        return cssObj;
+    }
+
+    /**
      * Gets the default theme from the running system.
      * 
      * Based on: https://stackoverflow.com/a/45763800/5397392
@@ -35,31 +67,8 @@
             // Remove CSS Rules that aren't root
             .filter((cssRule) => cssRule.selectorText === ":root")
             // Convert the CSS strings into a hashmap
-            .reduce((prev, cssRule) => {
-                // Get inner CSS
-                const first = cssRule.cssText.indexOf("{") + 1;
-                const last = cssRule.cssText.lastIndexOf("}") - 1;
-                const cssStr = cssRule.cssText.substring(first, last).trim();
-
-                // Map to an object
-                const newCSS = {};
-                cssStr
-                    .split(";")
-                    .forEach((line) => {
-                        if (!line || !line.includes(":")) {
-                            // If it doesn't have a : then it isn't a CSS property
-                            return;
-                        }
-
-                        const parts = line.split(":");
-                        const key = parts[0].trim();
-                        const value = parts[1].trim();
-                        newCSS[key] = value;
-                    });
-                
-                // Merge with the pervious object
-                return Object.assign(prev, newCSS);
-            }, {});
+            .reduce((prev, cssRule) => Object.assign(prev, cssStringToObject(cssRule.cssText)), {});
+        
         return root;
     }
 
