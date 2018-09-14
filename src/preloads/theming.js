@@ -9,6 +9,9 @@
 
     /** 
      * The name of the window that will create the theme store.
+     * 
+     * NOTE: With authentication, the store would be created and populated from dynamic configuration, so the hack of
+     * Creating the store in a specific window would go away.
      */
     const storeOwner = "Toolbar-1";
 
