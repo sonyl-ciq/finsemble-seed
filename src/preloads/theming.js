@@ -26,28 +26,25 @@
      * @param {string} cssStr CSS String
      */
     const cssStringToObject = (cssStr) => {
-        debugger
-
         // Get inner CSS string
-        const first = cssStr.indexOf("{") + 1;
-        const last = cssStr.lastIndexOf("}") - 1;
-        const innerCSS = cssStr.substring(first, last).trim();
+        const innerCSS = cssStr.match(/\{\s+(.*)\s+\}.*/)[1]
 
         // Map CSS to an object
-        const cssObj = {};
-        innerCSS
+        const cssObj = innerCSS
+            // Get each variable by splitting on ;
             .split(";")
-            .forEach((line) => {
-                if (!line || !line.includes(":")) {
-                    // If it doesn't have a : then it isn't a CSS property
-                    return;
-                }
-
+            // Removed null or empty lines
+            .filter((line) => line.includes(":"))
+            // Convert CSS line into a property
+            .reduce((prev, line) => {
                 const parts = line.split(":");
                 const key = parts[0].trim();
                 const value = parts[1].trim();
-                cssObj[key] = value;
-            });
+
+                prev[key] = value;
+
+                return prev;
+            }, {});
         
         return cssObj;
     }
