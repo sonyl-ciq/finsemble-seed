@@ -1,6 +1,12 @@
 {
 	"comment": "Top-level application config for development, adding on top of the core config",
 	"defaultStorage": "IndexedDBAdapter",
+    "authentication": {
+        "startup": {
+             "adapter": "PASSWORD",
+             "component": "defaultAuthentication"
+         }
+     },
 	"storage": {
 		"topicToDataStoreAdapters": {
 			"finsemble": "IndexedDBAdapter",
