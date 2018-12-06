@@ -1,1 +1,6 @@
-{}
+{
+    "AlertPopup": {
+        "output": "components/AlertPopup/AlertPopup",
+        "entry": "./src/components/AlertPopup/AlertPopup.js"
+    }
+}
