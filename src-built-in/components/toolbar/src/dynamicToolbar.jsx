@@ -14,6 +14,8 @@ import ToolbarStore from "../stores/toolbarStore";
 import AutoArrange from "../components/AutoArrange";
 import AlwaysOnTop from "../components/AlwaysOnTop";
 import BringToFront from "../components/BringToFront";
+import AlertCount from "../components/AlertCount";
+import NotificationCount from "../components/AlertCount";
 import MinimizeAll from "../components/MinimizeAll";
 import WorkspaceLauncherButton from "../components/WorkspaceLauncherButton";
 import WorkspaceMenuOpener from "../components/WorkspaceMenuOpener"
@@ -25,6 +27,7 @@ var customComponents = [];
 customComponents["AutoArrange"] = AutoArrange;
 customComponents["AlwaysOnTop"] = AlwaysOnTop;
 customComponents["BringToFront"] = BringToFront;
+customComponents["AlertCount"] = AlertCount;
 customComponents["MinimizeAll"] = MinimizeAll;
 customComponents["WorkspaceMenuOpener"] = WorkspaceMenuOpener;
 customComponents["Search"] = Search;

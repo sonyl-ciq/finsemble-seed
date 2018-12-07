@@ -3,22 +3,17 @@ const RouterClient = Finsemble.Clients.RouterClient;
 const Logger = Finsemble.Clients.Logger;
 Logger.start();
 Logger.log("alertmanager Service starting up");
-
-// Add and initialize any other clients you need to use 
-//   (services are initialised by the system, clients are not)
-let WindowClient = Finsemble.Clients.WindowClient;
-WindowClient.initialize();
-let LauncherClient = Finsemble.Clients.WindowClient;
+const LauncherClient = Finsemble.Clients.LauncherClient;
 LauncherClient.initialize();
-let DistributedStoreClient = Finsemble.Clients.DistributedStoreClient;
+const DistributedStoreClient = Finsemble.Clients.DistributedStoreClient;
 DistributedStoreClient.initialize();
 
 //TODO: Remove me, used to mock remotely triggered alert
 const HotkeyClient = Finsemble.Clients.HotkeyClient
 HotkeyClient.initialize();
-const keyMap = FSBL.Clients.HotkeyClient.keyMap,
+const keyMap = HotkeyClient.keyMap,
 hotkeys = [keyMap.ctrl, keyMap.shift, keyMap.m];
-let idCounter = 0;
+let idCounter = 1000;
 
 /**
  * 
@@ -52,7 +47,7 @@ function alertmanagerService() {
 	 */
 	this.receiveAlert = function (alertData, cb) {
 		if (!alertData.id) {
-			Logger.error("Alert added with no 'id' field. It will not be retrievable.", err);
+			Logger.error("Alert added with no 'id' field. It will not be retrievable.");
 		}
 		alertData.receivedTimestamp = Date.now();
 		//add the alert to the store 
@@ -63,17 +58,17 @@ function alertmanagerService() {
 			function(err) {
 				if (err) { 
 					Logger.error("AlertStore Distributed Store failed to save alerts array", err); 
-					cb(err, { status: "error" });
+					if (cb) { cb(err, { status: "error" }); }
 				}
 				else {
-					cb(null, { status: "received" });
+					if (cb) { cb(null, { status: "received" }); }
 				}
 			});
 		});
 
 		//show the alert component window with showWindow 
-		let windowIdentifier = {componentType: "alertPopup", windowName: "alertPopup"};
-		FSBL.Clients.LauncherClient.showWindow(windowIdentifier, {
+		let windowIdentifier = {componentType: "AlertPopup", windowName: "AlertPopup"};
+		LauncherClient.showWindow(windowIdentifier, {
 			spawnIfNotFound: true,
 			top: "center",
 			left: "center",
@@ -152,7 +147,8 @@ function alertmanagerService() {
 
 				} 
 				if (cb) { cb (err, res); }
-		});
+			});
+		}
 	}
 
 
@@ -167,7 +163,7 @@ function alertmanagerService() {
 				if(err){
 					return console.error(err);
 				}
-				self.receiveAlert({id: idCounter++, msg: "Dummy alert " + idCounter, triggered: "via a hotkey"});
+				self.receiveAlert({id: idCounter++, title: "Dummy alert", msg: "Hotkey triggered alert number  " + idCounter, triggered: "via a hotkey"});
 			}, 
 			function(err) {  //On registered
 				if(err){
@@ -175,15 +171,7 @@ function alertmanagerService() {
 				}
 			});
 
-		this.createRouterEndpoints();
-	}
-
-	/**
-	 * Creates a router endpoint for you service. 
-	 * Add query responders, listeners or pub/sub topic as appropriate. 
-	 * @private
-	 */
-	this.createRouterEndpoints = function () {
+		
 		//Example router integration which uses a single query responder to expose multiple functions
 		RouterClient.addResponder("alertmanager functions", function(error, queryMessage) {
 			if (!error) {
@@ -216,20 +204,19 @@ function alertmanagerService() {
 				Logger.error("Failed to setup alertmanager query responder", error);
 			}
 		});	
-	};
+	}
 
 	return this;
-};
+}
 
 alertmanagerService.prototype = new Finsemble.baseService({
 	startupDependencies: {
 		// add any services or clients that should be started before your service
-		services: [/* "dockingService", "authenticationService" */],
-		clients: ["windowClient", "launcherClient", "distributedStoreClient"]
+		services: [],
+		clients: ["launcherClient", "distributedStoreClient", "hotkeyClient"]
 	}
 });
 const serviceInstance = new alertmanagerService('alertmanagerService');
-
 serviceInstance.onBaseServiceReady(function (callback) {
 	serviceInstance.init(serviceInstance.setupConnections);
 	Logger.log("alertmanager Service ready");

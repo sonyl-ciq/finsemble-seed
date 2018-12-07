@@ -19,37 +19,35 @@ export default class AlertCount extends React.Component {
         this.removeListeners = this.removeListeners.bind(this);
     }
     componentDidMount() {
-        this.addListeners();
+        this.addListeners(this);
     }
     componentWillUnmount() {
-        this.removeListeners();
+        this.removeListeners(this);
     }
     receiveAlertCount(err, response) {
-		console.log("Received alert count: ", response.data);
+		console.log("Received alert count: ", response.value);
         this.setState({
-            alertCount: response.data.numAlerts
+            alertCount: response.value
         });
     }
-    addListeners() {
-		DistributedStoreClient.getStore(
-			store:"AlertStore",
-			global:true
-		}, function(err,storeObject_) {
+    addListeners(self) {
+		FSBL.Clients.DistributedStoreClient.getStore({
+			store: "AlertStore",
+			global: true
+		}, function (err, storeObject_) {
 			if (err) {
 				console.error("AlertStore Distributed Store setup failed");
 			}
-			this.storeObject = storeObject_;
-			this.storeObject.addListener ({field:"numAlerts"}, this.receiveAlertCount );
+			self.storeObject = storeObject_;
+			self.storeObject.addListener ({field:"numAlerts"}, self.receiveAlertCount );
 		});
-
-
     }
-    removeListeners() {
-		this.store.removeListener({field:'numAlerts'}, this.receiveAlertCount);
+    removeListeners(self) {
+		self.storeObject.removeListener({field:'numAlerts'}, this.receiveAlertCount);
     }
 	
 	openAlertPopup() {
-		let windowIdentifier = {componentType: "alertPopup", windowName: "alertPopup"};
+		let windowIdentifier = {componentType: "AlertPopup", windowName: "AlertPopup"};
 		FSBL.Clients.LauncherClient.showWindow(windowIdentifier, {
 			spawnIfNotFound: true,
 			top: "center",
@@ -75,7 +73,7 @@ export default class AlertCount extends React.Component {
 			"verticalAlign": "middle"
 		};
 		return (<FinsembleButton className={this.props.classes + " icon-only"} buttonType={["Toolbar"]} title={tooltip} onClick={this.openAlertPopup}>
-			<i className={buttonClass}></i><div id="alertCount" style={countStyle}>{this.state.notificationCount}</div>
+			<i className={buttonClass}></i><div id="alertCount" style={countStyle}>{this.state.alertCount}</div>
 		</FinsembleButton>);
 	}
 }

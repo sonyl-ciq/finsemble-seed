@@ -1,3 +1,25 @@
 body {
 	margin:0px;
+	color: var(--notification-body-font-color);
+	background-color: var(--notification-body-background-color);
+}
+
+h1 {
+	font-family: var(--notification-body-font-family);
+	margin: 8px 8px 6px 14px;
+}
+
+.notification-wrapper {
+	border-top: 1px solid var(--notification-body-font-color);
+	padding-top: 12px;
+	padding-bottom: 6px;
+}
+
+.notification-timestamp {
+    display: flex;
+    flex-direction: column;
+	font-size: 10px;
+	padding-top: 6px;
+	font-style: italic;
+	margin: 0px 10px;
 }
