@@ -6,10 +6,10 @@
 				"frame": false,
 				"resizable": false,
 				"autoShow": true,
-				"top": "top",
-				"left": "left",
-				"width": 800,
-				"height": "100%"
+                "top": "center",
+                "left": "center",
+                "width": 800,
+                "height": 600
 			},
 			"component": {
 				"singleton": true
@@ -17,8 +17,8 @@
 			"foreign": {
 				"services": {
 					"dockingService": {
-						"canGroup": false,
-						"isArrangable": false
+						"canGroup": true,
+						"isArrangable": true
 					}
 				},
 				"components": {
