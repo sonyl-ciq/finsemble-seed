@@ -81,3 +81,60 @@
 
 4. The seed project can now be started using `npm run dev`
 
+## Pop up alert tour
+When Finsemble starts, you should see the Alert Button that was added to the toolbar at the far right of the toolbar. The zero in red indicates that no alerts have been received:
+
+![AlertButton with no alerts](img/AlertButton.png)
+
+To simulate an alert being received, you can use the Ctrl + Shift + M hotkey for the service to generate an alert. You will see that that the Alert Button count now shows one notification:
+![AlertButton with one alert](img/AlertButton-1-alert.png)
+The Alert Manager service will also open the AlertPopup component with the information about the alert:
+![AlertPopup with alert information](img/AlertPopup-with-one-alert.png) 
+
+## Generating alerts programmatically
+Alerts can be generated programmatically using the following code:
+``` JavaScript
+const id = FSBL.Utils.guuid();
+FSBL.Clients.RouterClient.query(
+    "alertmanager",
+    {
+        query: "receiveAlert",
+        alert: {
+            id: id,
+            title: "Dummy credit approval alert",
+            msg: "Programmatically triggered credit approval alert number " + id,
+            options: [
+                "APPROVE",
+                "REFUSE"
+            ]
+        }
+    });
+```
+
+## Customizing behavior based on response
+Each notification can be have different options, specified by the `alert.options` array. The action take by each response can be customized by changing the `respondToAlert` function in the Alert Manager service. 
+``` JavaScript
+this.respondToAlert = function (alert, response, cb) {
+    if (response){ 
+        Logger.error("response to alert was undefined!"); 
+        if (cb) { 
+            cb("response to alert was undefined!", { alert: alert, status: "error" });
+        }
+    } else {
+        // Dismiss the alert as we're about to respond to it
+        this.dismissAlert(alert, function(err, res) {
+            if(!err) { 
+                res.status = "responded"; 
+
+                //TODO: send the 'response' and any required info from the the 'alert' to the remote service
+                console.debug("Responding to alert: ", res.alert.id, "response: ", response);
+                Logger.debug("Responding to alert: ", res.alert.id, "response: ", response);
+            } 
+
+            if (cb) { 
+                cb(err, res);
+            }
+        });
+    }
+}
+```
