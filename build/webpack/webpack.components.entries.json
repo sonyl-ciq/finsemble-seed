@@ -1,6 +1,1 @@
-{
-    "AlertPopup": {
-        "output": "components/AlertPopup/AlertPopup",
-        "entry": "./src/components/AlertPopup/src/app.jsx"
-    }
-}
+{}
