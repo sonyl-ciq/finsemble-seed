@@ -90,20 +90,20 @@ function alertmanagerService() {
 			if (cb) { cb("no alert passed to dismiss!");}
 		} else {
 			//remove the alert from store
-			storeObject.getValue({field:'alerts'},function(err, alerts){
+			storeObject.getValue({field:'alerts'},function(err, data){
 				if(err) {
 					Logger.error("AlertStore Distributed Store failed to retrieve alerts array", err);
 				} else {
 					let theAlert = null;
-					for (let a = 0; a < alerts.length; a++) {
-						if (a.id === alert.id) {
-							theAlert = alerts.splice(a,1);
+					for (let a = 0; a < data.length; a++) {
+						if (""+data[a].id == ""+alert.id) {
+							theAlert = data.splice(a,1)[0];
 							break;
 						}
 					}
 					if (theAlert) {
 						//save updated alerts to store
-						storeObject.setValues([{field:'alerts', value: alerts}, {field:'numAlerts', value: alerts.length}], 
+						storeObject.setValues([{field:'alerts', value: data}, {field:'numAlerts', value: data.length}], 
 						function(err) {
 							if (err) { 
 								Logger.error("AlertStore Distributed Store failed to save alerts array", err); 
@@ -142,9 +142,8 @@ function alertmanagerService() {
 				if(!err) { 
 					res.status = "responded"; 
 					//TODO: send the 'response' and any required info from the the 'alert' to the remote service
-				
-
-
+					console.debug("Responding to alert: ", res.alert.id, "response: ", response);
+					Logger.log("Responding to alert: ", res.alert.id, "response: ", response);
 				} 
 				if (cb) { cb (err, res); }
 			});
@@ -175,8 +174,6 @@ function alertmanagerService() {
 		//Example router integration which uses a single query responder to expose multiple functions
 		RouterClient.addResponder("alertmanager functions", function(error, queryMessage) {
 			if (!error) {
-				Logger.log('alertmanager Query: ',queryMessage);
-				
 				//For sending a response to an alert
 				if (queryMessage.data.query === "respondToAlert") {
 					try {

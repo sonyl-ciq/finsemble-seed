@@ -1,5 +1,5 @@
 import React from "react";
-import { FinsembleButton, FinsembleButtonLabel, FinsembleFontIcon } from "@chartiq/finsemble-react-controls"
+import { Actions as AlertPopupActions } from "../stores/AlertPopupStore";
 
 export default class OptionButton extends React.Component {
 
@@ -16,6 +16,7 @@ export default class OptionButton extends React.Component {
 	componentWillReceiveProps(nextProps) { }
 	itemClick() { 
 		console.log("Alert id: " + this.props.alertId + ": " + this.props.label + " clicked");
+		AlertPopupActions.respondToAlert(this.props.alertId, this.props.label, function(err,resp){});
 	}
 	render() {
 		return (

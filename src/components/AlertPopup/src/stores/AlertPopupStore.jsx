@@ -31,7 +31,9 @@ var AlertPopupStore = assign({}, EventEmitter.prototype, {
 });
 
 var Actions = {
-
+	respondToAlert: function (id, response, cb) {
+		FSBL.Clients.RouterClient.query("alertmanager functions", {query: "respondToAlert", alert: {id: id}, response}, cb);
+	}
 };
 
 // wait for FSBL to be ready before initializing.
