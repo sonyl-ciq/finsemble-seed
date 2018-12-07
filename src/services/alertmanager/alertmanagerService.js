@@ -172,7 +172,7 @@ function alertmanagerService() {
 
 		
 		//Example router integration which uses a single query responder to expose multiple functions
-		RouterClient.addResponder("alertmanager functions", function(error, queryMessage) {
+		RouterClient.addResponder("alertmanager", function(error, queryMessage) {
 			if (!error) {
 				//For sending a response to an alert
 				if (queryMessage.data.query === "respondToAlert") {

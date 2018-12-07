@@ -32,7 +32,24 @@ var AlertPopupStore = assign({}, EventEmitter.prototype, {
 
 var Actions = {
 	respondToAlert: function (id, response, cb) {
-		FSBL.Clients.RouterClient.query("alertmanager functions", {query: "respondToAlert", alert: {id: id}, response}, cb);
+		FSBL.Clients.RouterClient.query("alertmanager", {query: "respondToAlert", alert: {id: id}, response}, cb);
+	},
+	sendAlert: function () {
+		const id = FSBL.Utils.guuid();
+		FSBL.Clients.RouterClient.query(
+			"alertmanager",
+			{
+				query: "receiveAlert",
+				alert: {
+					id: id,
+					title: "Dummy credit approval alert",
+					msg: "Hotkey triggered credit approval alert number  " + id,
+					options: [
+						"APPROVE",
+						"REFUSE"
+					]
+				}
+			});
 	}
 };
 
