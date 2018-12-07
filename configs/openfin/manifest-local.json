@@ -71,7 +71,8 @@
         "servicesRoot": "http://localhost:3375/finsemble/services",
         "notificationURL": "http://localhost:3375/components/notification/notification.html",
         "importConfig": [
-            "$applicationRoot/configs/application/config.json"
+            "$applicationRoot/configs/application/config.json",
+            "$applicationRoot/components/AlertPopup/config.json"
         ],
         "IAC": {
             "serverAddress" : "wss://127.0.0.1:3376"

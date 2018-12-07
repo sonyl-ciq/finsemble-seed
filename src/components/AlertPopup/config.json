@@ -1,0 +1,40 @@
+{
+    "components" : {
+		"AlertPopup": {
+			"window": {
+				"url": "$applicationRoot/components/AlertPopup/AlertPopup.html",
+				"frame": false,
+				"resizable": false,
+				"autoShow": true,
+				"top": "top",
+				"left": "left",
+				"width": 800,
+				"height": "100%"
+			},
+			"component": {
+				"singleton": true
+			},
+			"foreign": {
+				"services": {
+					"dockingService": {
+						"canGroup": false,
+						"isArrangable": false
+					}
+				},
+				"components": {
+					"App Launcher": {
+						"launchableByUser": false
+					},
+					"Window Manager": {
+						"title": "AlertPopup",
+						"FSBLHeader": true,
+						"persistWindowState": false
+					},
+					"Toolbar": {
+						"iconClass": "AlertPopup"
+					}
+				}
+			}
+		}
+    }
+}
