@@ -32,7 +32,7 @@ export default class AppList extends React.Component {
 		this.onChangeDebounced(e);
 	}
 	onChangeDebounced(e) {
-		storeExports.Actions.search(e.target.value);
+		storeExports.Actions.search(e.target.value)
 	}
 	itemClick() {
 
