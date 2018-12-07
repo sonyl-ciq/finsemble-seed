@@ -87,8 +87,11 @@ When Finsemble starts, you should see the Alert Button that was added to the too
 ![AlertButton with no alerts](img/AlertButton.png)
 
 To simulate an alert being received, you can use the Ctrl + Shift + M hotkey for the service to generate an alert. You will see that that the Alert Button count now shows one notification:
+
 ![AlertButton with one alert](img/AlertButton-1-alert.png)
+
 The Alert Manager service will also open the AlertPopup component with the information about the alert:
+
 ![AlertPopup with alert information](img/AlertPopup-with-one-alert.png) 
 
 ## Generating alerts programmatically
