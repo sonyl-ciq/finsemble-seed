@@ -15,7 +15,6 @@ import AutoArrange from "../components/AutoArrange";
 import AlwaysOnTop from "../components/AlwaysOnTop";
 import BringToFront from "../components/BringToFront";
 import AlertCount from "../components/AlertCount";
-import NotificationCount from "../components/AlertCount";
 import MinimizeAll from "../components/MinimizeAll";
 import WorkspaceLauncherButton from "../components/WorkspaceLauncherButton";
 import WorkspaceMenuOpener from "../components/WorkspaceMenuOpener"
