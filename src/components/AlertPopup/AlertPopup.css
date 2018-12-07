@@ -23,3 +23,28 @@ h1 {
 	font-style: italic;
 	margin: 0px 10px;
 }
+
+.option-button {
+	margin: 8px;
+	padding: 6px;
+}
+
+.option-icon {
+	margin: 0px 6px 0px 0px;
+}
+
+.option-label {
+	font-family: var(--notification-body-font-family);
+}
+
+
+.option-red {
+	color: red;
+}
+
+.option-green {
+	color: green;
+}
+.option-black {
+	color: black;
+}

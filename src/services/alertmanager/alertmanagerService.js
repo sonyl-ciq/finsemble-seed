@@ -163,7 +163,7 @@ function alertmanagerService() {
 				if(err){
 					return console.error(err);
 				}
-				self.receiveAlert({id: idCounter++, title: "Dummy alert", msg: "Hotkey triggered alert number  " + idCounter, triggered: "via a hotkey"});
+				self.receiveAlert({id: idCounter++, title: "Dummy credit approval alert", msg: "Hotkey triggered credit approval alert number  " + idCounter, options: ["APPROVE","REFUSE"]});
 			}, 
 			function(err) {  //On registered
 				if(err){
