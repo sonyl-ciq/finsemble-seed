@@ -49,11 +49,7 @@ export default class AlertCount extends React.Component {
 	openAlertPopup() {
 		let windowIdentifier = {componentType: "AlertPopup", windowName: "AlertPopup"};
 		FSBL.Clients.LauncherClient.showWindow(windowIdentifier, {
-			spawnIfNotFound: true,
-			top: "center",
-			left: "center",
-			width: 800,
-			height: 600
+			spawnIfNotFound: true
 		});
 	}
 	render() {
