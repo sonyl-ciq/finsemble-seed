@@ -1,5 +1,9 @@
 # Pop Up Alert Example
 
+This example demonstrates common functionality needed in alerting service and components that will be used with remotely triggered events, for example via a websocket connection to an off-device service. The example doesn't include that connection but instead demonstrates the necessary UI functionality, simulating remotely triggered events with a hotkey (Ctrl + Shift + M).
+
+This particular implementation is based on React for the components and makes use of Finsemble's [distributed store](https://documentation.chartiq.com/finsemble/tutorial-DistributedStore.html) to managage the state of the alert service (inlcuding the counts and contents of the alerts). However, it could also be implemented via Finsemble Router [listen/transmit](https://documentation.chartiq.com/finsemble/tutorial-TheRouter.html#first-supported-model-listen-transmit) and [query/responder](https://documentation.chartiq.com/finsemble/tutorial-TheRouter.html#second-supported-model-query-response) use if preferred.
+
 ## Files included
 
 - Alert Manager service
@@ -141,3 +145,10 @@ this.respondToAlert = function (alert, response, cb) {
     }
 }
 ```
+
+## Customizing the Pop Up Alert example & connecting to a remote service ##
+Please see the `//TODO:` comments included in the _/src/services/alertmanager/alertmanagerService.js_ file for details of how an where to add connections to / integration with a remote service. To summarize, you should: 
+- setup any persistent connections in `alertmanagerService.setupConnections()`, replacing the hotkey setup (although you may wish to retrain a hotkey setup for displaying the AlertPopup component),
+- add an code for sending responses to alerts in `alertmanagerService.respondToAlert()`.
+
+Note that any changes to the alert data model are made in the service and represented in the distributed stored, with all other code picking up changes from the store and interacting with it functions on the service (exposed via the query responders setup on startup). Hence, only the microservice touches the connection to the remote service or changes the contents of the alerts store - which is considered best practice and keeps app architecture simple.
