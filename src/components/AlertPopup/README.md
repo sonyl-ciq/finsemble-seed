@@ -117,9 +117,10 @@ FSBL.Clients.RouterClient.query(
         }
     });
 ```
+Note that the id field must be included and must be unique.
 
 ## Customizing behavior based on response
-Each notification can be have different options, specified by the `alert.options` array. The action take by each response can be customized by changing the `respondToAlert` function in the Alert Manager service. 
+Each notification can be have different options, specified by the `alert.options` array. The action to take for each response given can be customized by changing the `respondToAlert` function in the Alert Manager service. By default, we're just logging the response we would send:
 ``` JavaScript
 this.respondToAlert = function (alert, response, cb) {
     if (response){ 
@@ -147,7 +148,7 @@ this.respondToAlert = function (alert, response, cb) {
 ```
 
 ## Customizing the Pop Up Alert example & connecting to a remote service ##
-Please see the `//TODO:` comments included in the _/src/services/alertmanager/alertmanagerService.js_ file for details of how an where to add connections to / integration with a remote service. To summarize, you should: 
+Please see the `//TODO:` comments included in the _/src/services/alertmanager/alertmanagerService.js_ file for details of how and where to add connections to / integration with a remote service. To summarize, you should: 
 - setup any persistent connections in `alertmanagerService.setupConnections()`, replacing the hotkey setup (although you may wish to retrain a hotkey setup for displaying the AlertPopup component),
 - add an code for sending responses to alerts in `alertmanagerService.respondToAlert()`.
 
