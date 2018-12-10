@@ -4,11 +4,11 @@ FSBL.addEventListener = function (event, cb) {
 	if (event == "onReady") {
 		cb();
 	}
-}
+};
 const RouterClient = FSBL.Clients.RouterClient;
 const Logger = FSBL.Clients.Logger;
 Logger.start();
-Logger.log("defaultworkspaces Service starting up");
+Logger.log("defaultWorkspacesService: starting up");
 
 // Add and initialize any other clients you need to use
 //   (services are initialised by the system, clients are not)
@@ -21,22 +21,24 @@ ConfigClient.initialize();
  *
  * @constructor
  */
-function defaultworkspacesService() {
+function defaultWorkspacesService() {
 	const self = this;
 
 	//Implement service functionality
 	this.createDefaultWorkspaces = function () {
-
+		Logger.system.debug("defaultWorkspacesService: createDefaultWorkspaces called");
 		let workspaceTemplates = {}, workspaceTemplateNames = [], initialWorkspaces = [], initialWorkspaceNames = [];
 		//get list of workspace templates
 
 		ConfigClient.getValue({ field: "finsemble.workspaceTemplates" }, function (err, configWorkspaceTemplates) {
+			Logger.system.debug("defaultWorkspacesService: Received workspaceTemplates", configWorkspaceTemplates);
 			workspaceTemplates = configWorkspaceTemplates || {};
 			workspaceTemplateNames = Object.keys(workspaceTemplates);
-			Logger.system.debug("Config workspaceTemplate names", workspaceTemplateNames);
-
+			Logger.system.debug("defaultWorkspacesService: Config workspaceTemplate names", workspaceTemplateNames);
+			
 			//get list of user workspaces
 			WorkspaceClient.getWorkspaces(function (err, response) {
+				Logger.system.debug("defaultWorkspacesService: User workspaces", response);
 				initialWorkspaces = response;
 				//produce an array of the workspace names
 				for (let w=0; w<initialWorkspaces.length; w++) {
@@ -46,6 +48,7 @@ function defaultworkspacesService() {
 				//check if templates exist as workspaces and create instances of workspaces if not present
 				for (let t=0; t<workspaceTemplateNames.length; t++) {
 					if (workspaceTemplateNames[t] != "Blank Template" && initialWorkspaceNames.indexOf(workspaceTemplateNames[t]) == -1 ) {
+						Logger.system.debug("defaultWorkspacesService: Added workspace template", workspaceTemplateNames[t]);
 						//create an instance of the workspace
 						let definition = {};
 						definition[workspaceTemplateNames[t]] = workspaceTemplates[workspaceTemplateNames[t]];
@@ -53,55 +56,26 @@ function defaultworkspacesService() {
 					}
 				}
 
-				Logger.log("Finished creating default workspaces");
+				Logger.log("defaultWorkspacesService: Finished creating default workspaces");
 			});
 		});
-	}
-
-
-	/**
-	 * Creates a router endpoint for you service.
-	 * Add query responders, listeners or pub/sub topic as appropriate.
-	 * @private
-	 */
-	this.createRouterEndpoints = function () {
-		//Example router integration which uses a single query responder to expose multiple functions
-		// RouterClient.addResponder("defaultworkspaces functions", function(error, queryMessage) {
-		// 	if (!error) {
-		// 		Logger.log('defaultworkspaces Query: ' + JSON.stringify(queryMessage));
-
-		// 		if (queryMessage.data.query === "myFunction") {
-		// 			try {
-		// 				queryMessage.sendQueryResponse(null, self.myFunction());
-		// 			} catch (err) {
-		// 				queryMessage.sendQueryResponse(err);
-		// 			}
-		// 		} else {
-		// 			queryMessage.sendQueryResponse("Unknown defaultworkspaces query function: " + queryMessage, null);
-		// 			Logger.error("Unknown defaultworkspaces query function: ", queryMessage);
-		// 		}
-		// 	} else {
-		// 		Logger.error("Failed to setup defaultworkspaces query responder", error);
-		// 	}
-		// });
 	};
 
 	return this;
 };
 
-defaultworkspacesService.prototype = new FSBL.baseService({
+defaultWorkspacesService.prototype = new FSBL.baseService({
 	startupDependencies: {
 		// add any services or clients that should be started before your service
 		services: ["workspaceService", "storageService"],
 		clients: ["configClient"]
 	}
 });
-const serviceInstance = new defaultworkspacesService('defaultworkspacesService');
+const serviceInstance = new defaultWorkspacesService('defaultWorkspacesService');
 
 serviceInstance.onBaseServiceReady(function (callback) {
-	serviceInstance.createRouterEndpoints();
-	Logger.log("defaultworkspaces Service ready");
 	serviceInstance.createDefaultWorkspaces();
+	Logger.log("defaultWorkspacesService: ready");
 	callback();
 });
 
