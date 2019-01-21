@@ -2,6 +2,18 @@
 /*!
 * Copyright 2017 by ChartIQ, Inc.
 * All rights reserved.
+
+This file is compiled into windowTitleBar.js. Finsemble injects or preloads this file into all non-system
+components. The FSBLReady() code at the bottom of this page automatically runs when this file is injected.
+It looks for a fsbl-header DOM element in which to place the windowTitleBar (the react code in this jsx file).
+
+How does Finsemble know to inject this file? WindowClient is currently hard coded to look for a component
+called "windowTitleBar" in the config (presentationComponents.json). It then looks in the url field, which
+points to the compiled js for this file. That url is then passed to the WindowService which does the actual
+injection.
+
+We will likely clean that up in the future by moving code from WindowClient.ts into this file and using
+a config setting to drive the injection directly inside the WindowService.
 */
 import React from "react";
 import ReactDOM from "react-dom";
@@ -10,7 +22,7 @@ import ReactDOM from "react-dom";
 import * as storeExports from "./stores/windowTitleBarStore";
 let HeaderData, HeaderActions, windowTitleBarStore;
 
-import HoverDetector from "./components/HoverDetector.jsx";
+import { FinsembleHoverDetector } from "@chartiq/finsemble-react-controls";
 
 //Parts that make up the windowTitleBar.
 //Left side
@@ -88,6 +100,7 @@ class WindowTitleBar extends React.Component {
 		this.onHackScrollbarChanged = this.onHackScrollbarChanged.bind(this);
 		this.onTilingStop = this.onTilingStop.bind(this);
 		this.onTilingStart = this.onTilingStart.bind(this);
+		this.resizeDragHandle = this.resizeDragHandle.bind(this);
 
 	}
 	componentWillMount() {
@@ -194,13 +207,19 @@ class WindowTitleBar extends React.Component {
 	 * Hide the dragHandle during drop operations, so that it doesn't interfere
 	 */
 	resizeDragHandle() {
-		let dragHandle = document.querySelector(".fsbl-drag-handle");
+		const fsblHeader = document.querySelector(".fsbl-header");
+		if (!fsblHeader) {
+			// If there isn't an FSBLHeader then there doesn't need to be a drag handle.
+			return;
+		}
+
 		// Create the dragger if it doesn't already exist
+		let dragHandle = document.querySelector(".fsbl-drag-handle");
 		if (!dragHandle) {
 			dragHandle = document.createElement("div");
 			dragHandle.className = "fsbl-drag-handle";
 
-			document.body.insertBefore(dragHandle, document.body.firstChild);
+			fsblHeader.insertBefore(dragHandle, fsblHeader.firstChild);
 			var self = this;
 			window.addEventListener("resize", function () {
 				self.resizeDragHandle();
@@ -210,7 +229,7 @@ class WindowTitleBar extends React.Component {
 		// Set the height of the dragHandle to match the height of the window title bar
 		// Do this every time through the render loop just in case a customer builds a
 		// header bar with dynamic height!
-		let bounds = document.querySelector(".fsbl-header").getBoundingClientRect();
+		let bounds = fsblHeader.getBoundingClientRect();
 		dragHandle.style.height = (bounds.height - 5) + "px"; // Subtract 5 pixels from height in order to make room for resize window cursor at top edge of window
 		dragHandle.style.marginTop = (-bounds.height + 5) + "px"; // Negative margin pulls the drag handle up over the fixed header
 
@@ -393,6 +412,7 @@ class WindowTitleBar extends React.Component {
 							listenForDragOver={!this.state.allowDragOnCenterRegion}
 							tabs={this.state.tabs}
 							ref="tabArea"
+							onTitleUpdated={this.resizeDragHandle}
 						/>}
 
 				</div>
@@ -409,15 +429,19 @@ class WindowTitleBar extends React.Component {
 	}
 }
 
+
 // This is how we used to do it, but this was causing timing problems in windows that
 // reload, such as Symphony. FSBL.addEventListener() is a better approach because
 // it is pub/sub, if the event had fired in the past then it will still be fired.
 // window.addEventListener("FSBLReady", function () {
 
-FSBL.addEventListener("onReady", function () {
+if (window.FSBL && FSBL.addEventListener) { FSBL.addEventListener("onReady", FSBLReady); } else { window.addEventListener("FSBLReady", FSBLReady) }
+function FSBLReady() {
+	if (FSBL.titleBarInserted) return;
+	FSBL.titleBarInserted = true;
 	storeExports.initialize(function () {
 		HeaderActions = storeExports.Actions;
 		windowTitleBarStore = storeExports.getStore();
 		ReactDOM.render(<WindowTitleBar />, document.getElementById("FSBLHeader"));
 	});
-});
+}
