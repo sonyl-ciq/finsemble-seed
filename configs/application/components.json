@@ -15,7 +15,7 @@
 			"component": {
 				"inject": false,
 				"spawnOnStartup": false,
-				"preload": "$applicationRoot/preloads/zoom.js"
+				"preload": ["$applicationRoot/preloads/zoom.js","$applicationRoot/preloads/theming.js"]
 			},
 			"foreign": {
 				"services": {
@@ -54,7 +54,8 @@
 			"component": {
 				"inject": false,
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/zoom.js","$applicationRoot/preloads/theming.js"]
 			},
 			"foreign": {
 				"services": {
@@ -127,7 +128,8 @@
 				"width": 1000
 			},
 			"component": {
-				"spawnOnStartup": false
+				"spawnOnStartup": false,
+				"preload": ["$applicationRoot/preloads/zoom.js","$applicationRoot/preloads/theming.js"]
 			},
 			"foreign": {
 				"services": {
@@ -155,7 +157,9 @@
 				"height": 800,
 				"width": 1000
 			},
-			"component": {},
+			"component": {
+				"preload": ["$applicationRoot/preloads/zoom.js","$applicationRoot/preloads/theming.js"]
+			},
 			"foreign": {
 				"services": {
 					"dockingService": {
@@ -223,7 +227,8 @@
                 "height": 600
             },
             "component": {
-                "inject": false
+				"inject": false,
+				"preload": ["$applicationRoot/preloads/zoom.js","$applicationRoot/preloads/theming.js"]
             },
             "foreign": {
                 "services": {

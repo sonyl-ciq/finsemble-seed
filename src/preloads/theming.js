@@ -13,7 +13,7 @@
      * NOTE: With authentication, the store would be created and populated from dynamic configuration, so the hack of
      * Creating the store in a specific window would go away.
      */
-    const storeOwner = "Toolbar-1";
+    const storeOwner = "Toolbar-1-Finsemble";
 
     /**
      * Handle to the theme store.
