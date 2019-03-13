@@ -478,7 +478,7 @@
 				taskMethods.launchApplication
 			], done);
 		},
-		
+
 		/**
 		 * Method called after tasks are defined.
 		 * @param done Callback function used to signal function completion to support asynchronous execution. Can
