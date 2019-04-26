@@ -1,20 +1,21 @@
-const FSBL = require("@chartiq/finsemble");
-window.FSBL = FSBL;
-FSBL.addEventListener = function (event, cb) {
-	if (event == "onReady") {
-		cb();
-	}
-};
-const RouterClient = FSBL.Clients.RouterClient;
-const Logger = FSBL.Clients.Logger;
+const Finsemble = require("@chartiq/finsemble");
+const RouterClient = Finsemble.Clients.RouterClient;
+const Logger = Finsemble.Clients.Logger;
 Logger.start();
 Logger.log("defaultWorkspacesService: starting up");
 
 // Add and initialize any other clients you need to use
 //   (services are initialised by the system, clients are not)
-let WorkspaceClient = FSBL.Clients.WorkspaceClient;
+let WorkspaceClient = Finsemble.Clients.WorkspaceClient;
 WorkspaceClient.initialize();
-let ConfigClient = FSBL.Clients.ConfigClient;
+//TODO: remove the below patch he the updated WIndowClient is released, which should not reference FSBL internally
+window.FSBL = {
+	Clients: {
+		WorkspaceClient: WorkspaceClient
+	}
+}
+
+let ConfigClient = Finsemble.Clients.ConfigClient;
 ConfigClient.initialize();
 
 /**
@@ -64,7 +65,7 @@ function defaultWorkspacesService() {
 	return this;
 };
 
-defaultWorkspacesService.prototype = new FSBL.baseService({
+defaultWorkspacesService.prototype = new Finsemble.baseService({
 	startupDependencies: {
 		// add any services or clients that should be started before your service
 		services: ["workspaceService", "storageService"],

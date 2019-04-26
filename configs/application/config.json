@@ -212,7 +212,7 @@
 		"$applicationRoot/configs/application/presentationComponents.json",
 		"$applicationRoot/configs/application/components.json",
 		"$applicationRoot/configs/application/workspaces.json",
-		"$applicationRoot/configs/application/workspaceTemplates.json",
+		"$applicationRoot/services/defaultWorkspaces/workspaceTemplates.testing.json",
 		"$applicationRoot/configs/application/services.json",
 		"$applicationRoot/configs/application/securityPolicies.json"
 	]
