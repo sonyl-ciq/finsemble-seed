@@ -149,5 +149,9 @@
         themeStore.addListener(themeChangeHandler, themeListenerCB);
     }
 
-    FSBL.addEventListener("onReady", initializeStore);
+    if (window.FSBL && FSBL.addEventListener) {
+		FSBL.addEventListener("onReady", initializeStore);
+	} else {
+		window.addEventListener("FSBLReady", initializeStore);
+	} 
 })()

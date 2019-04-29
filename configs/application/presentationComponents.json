@@ -771,7 +771,7 @@
 			},
 			"component": {
 				"category": "system",
-				"preload": "$applicationRoot/preloads/theming.js"
+				"preload": "$applicationRoot/preloads/theming.js",
 				"spawnOnStartup": false
 			},
 			"foreign": {
