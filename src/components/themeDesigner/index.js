@@ -130,5 +130,9 @@
 		FSBL.Clients.DistributedStoreClient.getStore({ store: storeName }, fetchStoreCB);
 	}
 
-	FSBL.addEventListener("onReady", onReadyCB);
+	if (window.FSBL && FSBL.addEventListener) {
+		FSBL.addEventListener("onReady", onReadyCB);
+	} else {
+		window.addEventListener("FSBLReady", onReadyCB);
+	} 
 })()
