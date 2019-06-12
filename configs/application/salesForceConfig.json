@@ -1,0 +1,14 @@
+{
+	"comment": "Top-level application config for salesforce, adding on top of the core config",
+    "authentication": {
+        "salesforce": {
+            "component": "Salesforce Login",
+            "adapter": "OAUTH2",
+            "authorization_endpoint": "https://login.salesforce.com/services/oauth2/authorize",
+            "backchannel_endpoint": "$applicationRoot/salesforce/oauth2/OAuthBackchannel",
+            "redirect_uri": "$applicationRoot/components/salesforce/oauth2/authed.html",
+            "scope": "full refresh_token web",
+            "client_id": "3MVG9zlTNB8o8BA1I4NIH8YcOPcorXzXvGcxzl554nhiWcIVtXjiXyd6wQTQxbSvzmC4CkR5mETAcll5q9CQR"
+        }
+    }
+}

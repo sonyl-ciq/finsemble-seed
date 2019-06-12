@@ -1,0 +1,13 @@
+{
+    "comment": "Configuration for Salesforce service.",
+    "services": {
+        "salesforceService": {
+            "useWindow": true,
+            "active": true,
+            "name": "salesforceService",
+            "file": "salesforceService.js",
+            "visible": false,
+            "html": "$applicationRoot/components/salesforce/salesforce.html"
+        }
+    }
+}

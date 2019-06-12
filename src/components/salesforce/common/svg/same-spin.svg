@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43.83 43.83">
+	<defs>
+		<style>.cls-1,.cls-2{fill:none;stroke-miterlimit:10;stroke-width:3.44px;}.cls-1{stroke:#fff;opacity:0.2;}.cls-2{stroke:#039bff;}</style>
+	</defs>
+	<title>same-spin</title>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_1-2" class="circle_rotate" data-name="Layer 1">
+			<circle class="cls-1" cx="21.92" cy="21.92" r="20.2"/>
+			<path class="cls-2" d="M42.11,21.92a20.2,20.2,0,0,0-20.2-20.2"/>
+		</g>
+	</g>
+</svg>

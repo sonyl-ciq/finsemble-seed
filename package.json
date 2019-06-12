@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "postinstall": "cd server/salesforce && npm install",
         "build:dev": "gulp build:dev --gulpfile=./gulpfile.js",
         "build": "gulp build:dev --gulpfile=./gulpfile.js",
         "dev": "gulp dev --gulpfile=./gulpfile.js",
@@ -40,6 +41,7 @@
         "babel-minify-webpack-plugin": "^0.3.0",
         "compression": "^1.7.2",
         "file-loader": "^1.1.11",
+        "jsforce": "^1.9.1",
         "lodash.clonedeep": "^4.5.0",
         "lodash.debounce": "^4.0.8",
         "lodash.throttle": "^4.1.1",

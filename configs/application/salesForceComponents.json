@@ -1,0 +1,76 @@
+{
+	"components": {
+		"Salesforce Contacts": {
+			"window": {
+				"url": "$applicationRoot/components/salesforce/contactList/contactList.html",
+				"width": 800,
+				"height": 750,
+				"position": "absolute",
+				"top": "center",
+				"left": "center",
+				"addToWorkspace": true
+			},
+			"foreign": {
+				"services": {
+					"dockingService": {
+						"isArrangable": true
+					}
+				},
+				"components": {
+					"App Launcher": {
+						"launchableByUser": true
+					},
+					"Window Manager": {
+						"FSBLHeader": true,
+						"persistWindowState": true,
+						"showLinker": true
+					},
+					"Toolbar": {
+						"iconURL": "$applicationRoot/components/salesforce/salesforcecloud.svg"
+					}
+				}
+			}
+		},
+		"Salesforce Login": {
+			"window": {
+				"//": "No url field. The url gets created automatically by oauth",
+				"width": 800,
+				"height": 750,
+				"position": "absolute",
+				"top": "center",
+				"left": "center",
+				"alwaysOnTop": true,
+				"addToWorkspace": false,
+				"options": {
+					"autoShow":true
+				}
+			},
+			"component": {
+				"//" : "inject our auto-password-fill code into salesforce's authentication url",
+				"preload": "$applicationRoot/components/salesforce/login/salesforceLogin.js",
+				"category": "system"
+			},
+			"foreign": {
+				"services": {
+					"dockingService": {
+						"isArrangable": false
+					}
+				},
+				"components": {
+					"App Launcher": {
+						"launchableByUser": false
+					},
+					"Window Manager": {
+						"FSBLHeader": true,
+						"persistWindowState": false,
+						"showLinker": false,
+						"title": "Salesforce Login"
+					},
+					"Toolbar": {
+						"iconURL": "$applicationRoot/components/salesforce/salesforcecloud.svg"
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.55 45.55">
+	<defs>
+		<style>.cls-1,.cls-2{fill:none;stroke-miterlimit:10;}.cls-1{stroke:#fff;stroke-width:1.38px;opacity:0.2;}.cls-2{stroke:#039bff;stroke-width:8.95px;}</style>
+	</defs>
+	<title>fat-spin</title>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_1-2" class="circle_rotate" data-name="Layer 1">
+			<circle class="cls-1" cx="20.88" cy="24.67" r="20.2"/>
+			<path class="cls-2" d="M41.08,24.67a20.2,20.2,0,0,0-20.2-20.2"/>
+		</g>
+	</g>
+</svg>

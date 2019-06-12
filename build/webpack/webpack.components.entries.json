@@ -1,1 +1,22 @@
-{}
+{
+	"src/components/salesforce/salesforceCommon.js":{
+		"output":"components/salesforce/salesforceCommon",
+		"entry":"./src/components/salesforce/salesforceCommon.js"
+	},
+	"src/components/salesforce/salesforceConnection.js":{
+		"output":"components/salesforce/salesforceConnection",
+		"entry":"./src/components/salesforce/salesforceConnection.js"
+	},
+	"src/components/salesforce/login/salesforceLogin.js":{
+		"output":"components/salesforce/login/salesforceLogin",
+		"entry":"./src/components/salesforce/login/salesforceLogin.js"
+	},
+	"src/components/salesforce/contactList/contactList.js":{
+		"output":"components/salesforce/contactList/contactList",
+		"entry":"./src/components/salesforce/contactList/contactList.js"
+	},
+	"src/components/salesforce/salesforceService.js":{
+		"output":"components/salesforce/salesforceService",
+		"entry":"./src/components/salesforce/salesforceService.js"
+	}
+}

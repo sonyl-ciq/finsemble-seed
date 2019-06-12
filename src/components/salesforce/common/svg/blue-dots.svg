@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81.1 7.2">
+	<defs>
+		<style>.cls-1{fill:#039bff;}</style>
+	</defs>
+	<title>blue-dots</title>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_1-2" data-name="Layer 1">
+			<circle class="cls-1 circle1" cx="3.6" cy="3.6" r="3.6"/>
+			<circle class="cls-1 circle2" cx="22.07" cy="3.6" r="3.6"/>
+			<circle class="cls-1 circle3" cx="40.55" cy="3.6" r="3.6"/>
+			<circle class="cls-1 circle4" cx="59.02" cy="3.6" r="3.6"/>
+			<circle class="cls-1 circle5" cx="77.5" cy="3.6" r="3.6"/>
+		</g>
+	</g>
+</svg>

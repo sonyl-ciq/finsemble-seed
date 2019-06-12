@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.45 54.41">
+	<defs>
+		<style>.cls-1{fill:none;}.cls-1,.cls-2{stroke:#039bff;stroke-linecap:round;stroke-linejoin:round;}.cls-2{fill:#121a30;}</style>
+	</defs>
+	<title>blue-bars</title>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_1-2" data-name="Layer 1">
+			<line class="cls-1 line1" x1="5.25" y1="53.91" x2="5.25" y2="0.5"/>
+			<rect class="cls-2 bar1" x="0.5" y="10.87" width="9.5" height="32.67"/>
+			<line class="cls-1 line2" x1="19.23" y1="53.91" x2="19.23" y2="0.5"/>
+			<rect class="cls-2 bar2" x="14.48" y="10.87" width="9.5" height="32.67"/>
+			<line class="cls-1 line3" x1="33.22" y1="53.91" x2="33.22" y2="0.5"/>
+			<rect class="cls-2 bar3" x="28.47" y="10.87" width="9.5" height="32.67"/>
+			<line class="cls-1 line4" x1="47.2" y1="53.91" x2="47.2" y2="0.5"/>
+			<rect class="cls-2 bar4" x="42.45" y="10.87" width="9.5" height="32.67"/>
+		</g>
+	</g>
+</svg>
