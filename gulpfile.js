@@ -22,7 +22,7 @@
 
 	const FEA_PATH = path.join(__dirname, "node_modules", "@chartiq", "finsemble-electron-adapter");
 	const FEA_PATH_EXISTS = fs.existsSync(FEA_PATH);
-	const FEA = FEA_PATH_EXISTS ? require("@chartiq/finsemble-electron-adapter/exports") : undefined;
+	const FEA = FEA_PATH_EXISTS ? require("@chartiq/finsemble-electron-adapter/dist/main.bundle") : undefined;
 	const FEAPackager = FEA_PATH_EXISTS ? require("@chartiq/finsemble-electron-adapter/deploy/deploymentHelpers") : undefined;
 
 	// local
@@ -403,6 +403,7 @@
 			let config = {
 				manifest: cfg.serverConfig,
 				chromiumFlags: JSON.stringify(cfg.chromiumFlags),
+				path: FEA_PATH,
 			}
 
 			// set breakpointOnStart variable so FEA knows whether to pause initial code execution
