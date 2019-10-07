@@ -1,1 +1,6 @@
-{}
+{
+    "adapterTest": {
+        "output": "components/adapterTest/adapterTest",
+        "entry": "./src/components/adapterTest/adapterTest.js"
+    }
+}
