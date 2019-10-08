@@ -7,10 +7,6 @@
 		"output": "adapters/indexedDBAdapter",
 		"entry":"./src-built-in/adapters/indexedDBAdapter.js"
 	},
-	"InMemoryStorageAdapter": {
-		"output": "adapters/InMemoryStorageAdapter",
-		"entry":"./src/adapters/InMemoryStorageAdapter.js"
-	},
 	"MongoStorageAdapter": {
 		"output": "adapters/MongoStorageAdapter",
 		"entry":"./src/adapters/MongoStorageAdapter.js"

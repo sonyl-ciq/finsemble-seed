@@ -17,7 +17,8 @@ const MongoStorageAdapter = function () {
 	this.myStorage = {};
 
 	this.save = (params, cb) => {
-		console.log(`Saving ${params}`)
+		const data = { topic: 'fsblWorkspaces', key: 'finsemble.workspaces', value: 'test' };
+
 		/*//Retrieves a key that looks like this:
 		//applicationUUID:userName:topic:key
 		const combinedKey = this.getCombinedKey(this, params);
@@ -27,11 +28,11 @@ const MongoStorageAdapter = function () {
 		console.log('mystorage', this.myStorage)
 		return cb(null, { status: "success" });*/
 
-		const combinedKey = this.getCombinedKey(this, params);
-		console.log(combinedKey)
+		/*const combinedKey = this.getCombinedKey(this, params);
+		console.log(combinedKey)*/
 		fetch(baseURL + "/save", {
 			method: 'POST',
-			body: JSON.stringify(combinedKey),
+			body: JSON.stringify(data),
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -62,8 +63,10 @@ request();
 		let err;
 		try {
 			returnValue = await data.json();
+			console.log(returnValue)
 		} catch(e) {
-			err = `No data found for key ${params.key}, ${e}`	
+			err = `No data found for key ${params.key}, ${e}`;
+			console.log(err);	
 			const workspace = await FSBL.Clients.WorkspaceClient.createWorkspace();
 			const name = await workspace.name();
 			console.log('workspacename',name);

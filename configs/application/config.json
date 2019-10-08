@@ -96,8 +96,7 @@
 			"topicToDataStoreAdapters" : {
 				"Finsemble" : "IndexedDBAdapter",
 				"finsemble.workspace" : "IndexedDBAdapter",
-				"finsemble.workspace.cache" : "IndexedDBAdapter",
-				"IntraSession": "MongoStorageAdapter"
+				"finsemble.workspace.cache" : "IndexedDBAdapter"
 			},
 			"dataStoreAdapters": {
 				"LocalStorageAdapter": "$applicationRoot/adapters/localStorageAdapter.js",

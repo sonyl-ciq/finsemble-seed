@@ -2,5 +2,9 @@
     "adapterTest": {
         "output": "components/adapterTest/adapterTest",
         "entry": "./src/components/adapterTest/adapterTest.js"
+    },
+    "mongo": {
+        "output": "components/mongo/mongo",
+        "entry": "./src/components/mongo/mongo.js"
     }
 }
