@@ -160,6 +160,11 @@
 			}
 			next();
 		});
+
+		app.get("/file/excel", (req, res, next) => {
+			res.download(`${__dirname}/../assets/files/luke.xlsx`)
+		})
+
 	}
 	/**
 	 * Builds the server.

@@ -1,1 +1,6 @@
-{}
+{
+    "downloadTestComponent": {
+        "output": "components/downloadTestComponent/downloadTestComponent",
+        "entry": "./src/components/downloadTestComponent/downloadTestComponent.js"
+    }
+}
