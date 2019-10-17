@@ -5,12 +5,15 @@
 
 # Example of Forcing a File Download via JavaScript from Within a Finsemble Component
 
-## Method 1
+## Installation
 
 1. `npm install` to ensure all dependencies are available.
 1. `npm run dev`
 1. Create a `downloadTestComponent` in the workspace:
     ![](https://gist.githubusercontent.com/sonyl-ciq/566d5f3ee1421c031c722eca73db618f/raw/27e8f44d141221637d77ab3798ea6877e52017e3/downloadTestComponent.png)
+
+## Method 1
+
 1. Use the "Download Local" link to demonstrate downloading a file from Finsemble. A route in `server.js` provides this:
 
     ```js
