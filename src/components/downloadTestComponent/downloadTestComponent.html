@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>downloadTestComponent</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="downloadTestComponent.css">
+   <script src="../../vendor.bundle.js"></script>
+   <script src="downloadTestComponent.js"></script>
+</head>
+<body>
+<h1>downloadTestComponent</h1>
+
+<p>This is a file local to Finsemble:<a href="javascript:download()">Download Local</a></p>
+<p>If you want to try from a foreign port, stand up <a href="https://github.com/sonyl-ciq/express-download-file-test" target="_blank">this</a> and then try <a href="javascript:download2()">Download Foreign</a> </p>
+</body>
+
+<script>
+function download() {
+  window.location = "/file/txt"
+}
+
+function download2() {
+  window.location = "http://localhost:3000/"
+}
+</script>
+</html>
+

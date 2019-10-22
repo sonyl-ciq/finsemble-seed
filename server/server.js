@@ -160,6 +160,11 @@
 			}
 			next();
 		});
+
+		app.get("/file/txt", (req, res, next) => {
+			res.download(`${__dirname}/../assets/files/test.txt`)
+		})
+
 	}
 	/**
 	 * Builds the server.

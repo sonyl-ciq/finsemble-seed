@@ -1,0 +1,1 @@
+ReceiveTime|Account|Symbol|Side|Ord Type|TIF|Price|Order Qty|Ord Status|Avg Px|Fill %|Fill Qty|Order ID|Connection Name|Currency|Customer|Trade Date|InboundLatency|OutboundLatency|Customer Slang|Routing Hub|Smart Strategy|Customer Account
